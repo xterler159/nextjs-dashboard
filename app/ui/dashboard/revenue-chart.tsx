@@ -1,7 +1,7 @@
-import { generateYAxis } from '@/app/lib/utils';
-import { CalendarIcon } from '@heroicons/react/24/outline';
-import { lusitana } from '@/app/ui/fonts';
-import { Revenue } from '@/app/lib/definitions';
+import { generateYAxis } from "@/app/lib/utils";
+import { CalendarIcon } from "@heroicons/react/24/outline";
+import { lusitana } from "@/app/ui/fonts";
+import { Revenue } from "@/app/lib/definitions";
 
 // This component is representational only.
 // For data visualization UI, check out:
@@ -10,8 +10,8 @@ import { Revenue } from '@/app/lib/definitions';
 // https://airbnb.io/visx/
 
 export type RevenueChartProps = {
-  revenue: Revenue[]
-}
+  revenue: Revenue[];
+};
 
 export default async function RevenueChart({ revenue }: RevenueChartProps) {
   const chartHeight = 350;
@@ -25,9 +25,7 @@ export default async function RevenueChart({ revenue }: RevenueChartProps) {
 
   return (
     <div className="w-full md:col-span-4">
-      <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
-        Recent Revenue
-      </h2>
+      <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>Recent Revenue</h2>
       {/* NOTE: Uncomment this code in Chapter 7 */}
 
       <div className="rounded-xl bg-gray-50 p-4">
@@ -50,12 +48,9 @@ export default async function RevenueChart({ revenue }: RevenueChartProps) {
                 }}
               />
 
-              <p className="-rotate-90 text-sm text-gray-400 sm:rotate-0">
-                {month.month}
-              </p>
+              <p className="-rotate-90 text-sm text-gray-400 sm:rotate-0">{month.month}</p>
             </div>
           ))}
-
         </div>
 
         <div className="flex items-center pb-2 pt-6">

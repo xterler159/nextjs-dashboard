@@ -1,12 +1,12 @@
-import { Card } from "@/app/ui/dashboard/cards"
-import RevenueChart from "@/app/ui/dashboard/revenue-chart"
-import { lusitana } from "@/app/ui/fonts"
-import { fetchLatestInvoices, fetchRevenue } from "@/app/lib/data"
-import LatestInvoices from "@/app/ui/dashboard/latest-invoices"
+import { Card } from "@/app/ui/dashboard/cards";
+import RevenueChart from "@/app/ui/dashboard/revenue-chart";
+import { lusitana } from "@/app/ui/fonts";
+import { fetchLatestInvoices, fetchRevenue } from "@/app/lib/data";
+import LatestInvoices from "@/app/ui/dashboard/latest-invoices";
 
 const Dashboard = async () => {
-  const revenueList = await fetchRevenue()
-  const latestRevenueList = await fetchLatestInvoices()
+  const revenueList = await fetchRevenue();
+  const latestRevenueList = await fetchLatestInvoices();
   // const totalPaidInvoices = 200
 
   // console.log("revenueList:", revenueList)
@@ -31,7 +31,7 @@ const Dashboard = async () => {
         <LatestInvoices latestInvoices={latestRevenueList} />
       </div>
     </main>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;

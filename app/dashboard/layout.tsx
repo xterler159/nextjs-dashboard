@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 
-import SideNav from '@/app/ui/dashboard/sidenav';
+import SideNav from "@/app/ui/dashboard/sidenav";
 
 const Layout = ({ children }: { children: ReactNode }) => {
   return (
@@ -9,11 +9,9 @@ const Layout = ({ children }: { children: ReactNode }) => {
         <SideNav />
       </div>
 
-      <div className="flex-grow p-6 md:overflow-y-auto md:p-12">
-        {children}
-      </div>
+      <div className="flex-grow p-6 md:overflow-y-auto md:p-12">{children}</div>
     </div>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;
