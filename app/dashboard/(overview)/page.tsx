@@ -5,7 +5,7 @@ import RevenueChart from "@/app/ui/dashboard/revenue-chart";
 import { lusitana } from "@/app/ui/fonts";
 import { fetchCardData, fetchLatestInvoices, fetchRevenue } from "@/app/lib/data";
 import LatestInvoices from "@/app/ui/dashboard/latest-invoices";
-import { RevenueChartSkeleton } from "@/app/ui/skeletons";
+import { LatestInvoicesSkeleton, RevenueChartSkeleton } from "@/app/ui/skeletons";
 
 const Dashboard = async () => {
   // const revenueList = await fetchRevenue();
@@ -29,7 +29,9 @@ const Dashboard = async () => {
           <RevenueChart />
         </Suspense>
 
-        <LatestInvoices latestInvoices={latestRevenueList} />
+        <Suspense fallback={<LatestInvoicesSkeleton />}>
+          <LatestInvoices />
+        </Suspense>
       </div>
     </main>
   );
