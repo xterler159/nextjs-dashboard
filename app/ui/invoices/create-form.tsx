@@ -42,6 +42,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
           <label htmlFor="amount" className="mb-2 block text-sm font-medium">
             Choose an amount
           </label>
+
           <div className="relative mt-2 rounded-md">
             <div className="relative">
               <input
@@ -77,6 +78,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
                   Pending <ClockIcon className="h-4 w-4" />
                 </label>
               </div>
+
               <div className="flex items-center">
                 <input
                   id="paid"
@@ -85,6 +87,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
                   value="paid"
                   className="h-4 w-4 cursor-pointer border-gray-300 bg-gray-100 text-gray-600 focus:ring-2"
                 />
+
                 <label
                   htmlFor="paid"
                   className="ml-2 flex cursor-pointer items-center gap-1.5 rounded-full bg-green-500 px-3 py-1.5 text-xs font-medium text-white"
@@ -96,6 +99,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
           </div>
         </fieldset>
       </div>
+
       <div className="mt-6 flex justify-end gap-4">
         <Link
           href="/dashboard/invoices"
