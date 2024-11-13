@@ -8,26 +8,26 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { generatePagination } from "@/app/lib/utils";
 
 export type PaginationProps = {
-  totalPages: number
-}
+  totalPages: number;
+};
 
 export default function Pagination({ totalPages }: PaginationProps) {
   // NOTE: Uncomment this code in Chapter 11
 
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const currentPage = Number(searchParams.get("page")) || 1;
 
   const allPages = generatePagination(currentPage, totalPages);
 
   // TODO: fix when url resetting when the user is searching
   const createPageURL = (pageNumber: number | string) => {
-    const params = new URLSearchParams()
-    params.set("page", pageNumber.toString())
-    const pageUrl = `${pathname}?${params.toString()}`
+    const params = new URLSearchParams();
+    params.set("page", pageNumber.toString());
+    const pageUrl = `${pathname}?${params.toString()}`;
 
-    return pageUrl
-  }
+    return pageUrl;
+  };
 
   return (
     <>
@@ -42,12 +42,12 @@ export default function Pagination({ totalPages }: PaginationProps) {
 
         <div className="flex -space-x-px">
           {allPages.map((page, index) => {
-            let position: 'first' | 'last' | 'single' | 'middle' | undefined;
+            let position: "first" | "last" | "single" | "middle" | undefined;
 
-            if (index === 0) position = 'first';
-            if (index === allPages.length - 1) position = 'last';
-            if (allPages.length === 1) position = 'single';
-            if (page === '...') position = 'middle';
+            if (index === 0) position = "first";
+            if (index === allPages.length - 1) position = "last";
+            if (allPages.length === 1) position = "single";
+            if (page === "...") position = "middle";
 
             return (
               <PaginationNumber

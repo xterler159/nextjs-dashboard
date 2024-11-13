@@ -7,22 +7,22 @@ const Create = async () => {
 
   return (
     <main>
-      <Breadcrumbs breadcrumbs={
-        [
+      <Breadcrumbs
+        breadcrumbs={[
           {
             label: "Invoices",
-            href: "/dashboard/invoices"
+            href: "/dashboard/invoices",
           },
           {
             label: "Create Invoice",
             href: "/dashboard/invoices/create",
-            active: true
-          }
-        ]
-      } />
+            active: true,
+          },
+        ]}
+      />
       <Form customers={customers} />
     </main>
-  )
-}
+  );
+};
 
 export default Create;
