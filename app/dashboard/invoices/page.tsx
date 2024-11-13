@@ -3,10 +3,23 @@ import Search from "@/app/ui/search";
 import { CreateInvoice } from "@/app/ui/invoices/buttons";
 import Pagination from "@/app/ui/invoices/pagination";
 import { Suspense } from "react";
-import { InvoiceSkeleton } from "@/app/ui/skeletons";
+import { InvoicesTableSkeleton } from "@/app/ui/skeletons";
 import Table from "@/app/ui/invoices/table";
 
-const Invoices = () => {
+export type SearchParamsType = {
+  query?: string;
+  page?: string;
+}
+
+export type InvoicesProps = {
+  searchParams: Promise<SearchParamsType>;
+}
+
+const Invoices = async ({ searchParams }: InvoicesProps) => {
+  const { page, query } = await searchParams
+  const searchQuery = query || ''
+  const currentPage = Number(page) || 1
+
   return (
     <div className="w-full">
       <div className="flex w-full items-center justify-between">
@@ -18,11 +31,13 @@ const Invoices = () => {
         <CreateInvoice />
       </div>
 
-      {/*<Suspense fallback={<InvoiceSkeleton />}>*/}
-      {/*  <Table />*/}
-      {/*</Suspense>*/}
+      <Suspense fallback={<InvoicesTableSkeleton />}>
+        <Table query={searchQuery} currentPage={currentPage} />
+      </Suspense>
 
-      <div className="mt-5 flex w-full justify-center">{/*<Pagination totalPages={20} />*/}</div>
+      <div className="mt-5 flex w-full justify-center">
+        {/* <Pagination totalPages={20} /> */}
+      </div>
     </div>
   );
 };
