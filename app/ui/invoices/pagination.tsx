@@ -20,6 +20,7 @@ export default function Pagination({ totalPages }: PaginationProps) {
 
   const allPages = generatePagination(currentPage, totalPages);
 
+  // TODO: fix when url resetting when the user is searching
   const createPageURL = (pageNumber: number | string) => {
     const params = new URLSearchParams()
     params.set("page", pageNumber.toString())
