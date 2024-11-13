@@ -1,24 +1,27 @@
 "use client";
 
-import { CustomerField, InvoiceForm } from "@/app/lib/definitions";
 import {
   CheckIcon,
   ClockIcon,
   CurrencyDollarIcon,
   UserCircleIcon,
 } from "@heroicons/react/24/outline";
+
+import { CustomerField, InvoiceForm } from "@/app/lib/definitions";
 import Link from "next/link";
 import { Button } from "@/app/ui/button";
+import { updateInvoice } from "@/app/lib/actions"
 
-export default function EditInvoiceForm({
-  invoice,
-  customers,
-}: {
+export type EditInvoiceFormProps = {
   invoice: InvoiceForm;
   customers: CustomerField[];
-}) {
+}
+
+export default function EditInvoiceForm({ invoice, customers }: EditInvoiceFormProps) {
+  const updateInvoiceWithId = updateInvoice.bind(null, invoice.id)
+
   return (
-    <form>
+    <form action={updateInvoiceWithId}>
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
         {/* Customer Name */}
         <div className="mb-4">
@@ -50,6 +53,7 @@ export default function EditInvoiceForm({
           <label htmlFor="amount" className="mb-2 block text-sm font-medium">
             Choose an amount
           </label>
+
           <div className="relative mt-2 rounded-md">
             <div className="relative">
               <input
@@ -69,6 +73,7 @@ export default function EditInvoiceForm({
         {/* Invoice Status */}
         <fieldset>
           <legend className="mb-2 block text-sm font-medium">Set the invoice status</legend>
+
           <div className="rounded-md border border-gray-200 bg-white px-[14px] py-3">
             <div className="flex gap-4">
               <div className="flex items-center">
@@ -87,6 +92,7 @@ export default function EditInvoiceForm({
                   Pending <ClockIcon className="h-4 w-4" />
                 </label>
               </div>
+
               <div className="flex items-center">
                 <input
                   id="paid"
@@ -107,6 +113,7 @@ export default function EditInvoiceForm({
           </div>
         </fieldset>
       </div>
+
       <div className="mt-6 flex justify-end gap-4">
         <Link
           href="/dashboard/invoices"
